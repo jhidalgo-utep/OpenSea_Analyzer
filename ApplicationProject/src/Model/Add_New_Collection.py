@@ -13,4 +13,6 @@ class AddNewCollection(object):
         #elif slug exist and new slug return 1
         #elif slug exist and slug been added but not fully updated return 2
         #elif slug exist and slug been added and fully updated return 3
-        
+    
+    def execute(user_slug):
+        pass

@@ -6,12 +6,12 @@ import json
 import os
 from datetime import datetime
 from DataStructure.Set import Set
-from Add_New_Collection import AddNewCollection
+from Model.Add_New_Collection import AddNewCollection
 from StartUp.User_Setting import UserSetting
 
 # Objects
 UserSetting = UserSetting()
-AddNewCollection = AddNewCollection()
+# AddNewCollection = AddNewCollection()
 
 class Main_Window_Controller(object):
     def __init__(self):
@@ -46,7 +46,9 @@ class Main_Window_Controller(object):
             
             
             elif "add collection" in user_choice or "add a collection" in user_choice:
-                collection_slug = input("define collection slug $")
+                collection_slug = input("define collection slug $").strip()
+                AddNewCollection.execute(collection_slug)
+                
                 # slug_status = AddNewCollection.check_slug(collection_slug)
                 # AddNewCollection.write_json(collection_slug)
                 
@@ -59,7 +61,50 @@ class Main_Window_Controller(object):
                     if collection_slug in i:
                         already_in_database = True
                         print('already in db...')
+                        
+                        # READ JSON slugs file
+                        # file1 = open(f"data/backend/slug/slug_name.json", 'r')
+                        
+                        with open(f"data/backend/slug/slug_name.txt", "r") as data_file:    
+                            old_data = data_file.read()
+                            
+                        old_data = old_data.split(',')
+                        list1 = []
+                        
+                        for i in old_data:
+                            print(i.strip() )
+                            list1.append(i.strip() )
+                        
+                        if collection_slug not in list1:
+                            list1.append(collection_slug)
+                        data_file.close()
+                        
+                        with open(f"data/backend/slug/slug_name.txt", 'w') as outfile:
+                            for i in range(len(list1)):
+                                outfile.write(list1[i])
+                                if i != len(list1)-1:
+                                    outfile.write(', ')
+                        outfile.close()
+                        
+                        
+                        found = False
+                        
+
+                        
+                        if found:
+                            print('found')
+                            pass
+                        else:
+                            print('writing slug name')
+                            # #write json files
+                            # file2 = open(f"data/backend/slug/slug_name.json", 'a')
+                            
+                            
+                            # file2.write('{collection_slug}')
+                            # file2.close()
                         break
+                    
+                
                     
                 if already_in_database:
                     print('alread in database...')
@@ -166,6 +211,7 @@ class Main_Window_Controller(object):
                     f.close()
                     print('done')
                     
+
 def print_loading_screen():
     time.sleep(.2)
     print('...')
@@ -177,7 +223,7 @@ def print_loading_screen():
     print('...')
     time.sleep(.9)
     print('.....')
-    time.sleep(.5)
+    time.sleep(.3)
     print()
     
 
