@@ -5,7 +5,7 @@ class UserSetting(object):
         self.name = "music nfts profile"
         self.dev_mode = True
         self.access_number = "14g146aaf03d45o24"
-        self.api_key = "7b712a06a86444feb98e5fd4269eb83c"
+        self.api_key = "<INSERT YOUR OPEN SEA - API KEY HERE>"
         self.unique_number = 1424
         self.public = True
         self.custom = True

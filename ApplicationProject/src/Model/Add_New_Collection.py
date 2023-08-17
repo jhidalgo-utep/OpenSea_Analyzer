@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 
-import requests
+
 import json
 import os
 import time
 from datetime import datetime
 from DataStructure.Set import Set
 from StartUp.User_Setting import UserSetting
+import requests
+
+# Object(s)
+UserSetting = UserSetting()
 
 class AddNewCollection(object):
     def __init__(self):
@@ -49,6 +53,8 @@ class AddNewCollection(object):
         
         if collection_slug not in list1:
             list1.append(collection_slug)
+        else:
+            already_in_database = True
         data_file.close()
         
         with open(f"data/backend/slug/slug_name.txt", 'w') as outfile:
@@ -59,21 +65,18 @@ class AddNewCollection(object):
         outfile.close()
         
         
-        found = False
-        
-
-        
-        if found:
-            print('found')
-            pass
-        else:
-            print('writing slug name')
-            # #write json files
-            # file2 = open(f"data/backend/slug/slug_name.json", 'a')
+        # found = False
+        # if found:
+        #     print('found')
+        #     pass
+        # else:
+        #     print('writing slug name')
+        #     # #write json files
+        #     # file2 = open(f"data/backend/slug/slug_name.json", 'a')
             
             
-            # file2.write('{collection_slug}')
-            # file2.close()
+        #     # file2.write('{collection_slug}')
+        #     # file2.close()
         
             
         
