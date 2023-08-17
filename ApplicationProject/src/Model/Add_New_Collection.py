@@ -8,20 +8,22 @@ from datetime import datetime
 from DataStructure.Set import Set
 from StartUp.User_Setting import UserSetting
 
-
 class AddNewCollection(object):
     def __init__(self):
         self.custom = True
         
+        
     def write_json(self, user_slug):
         print(user_slug)
     
+    
     def slug_status(self, user_slug):
-        pass
         # if slug error doesnt exist return 4
         #elif slug exist and new slug return 1
         #elif slug exist and slug been added but not fully updated return 2
         #elif slug exist and slug been added and fully updated return 3
+        pass
+    
     
     def execute(collection_slug):
         # slug_status = AddNewCollection.check_slug(collection_slug)
@@ -30,54 +32,49 @@ class AddNewCollection(object):
         error_list = 0
         already_in_database = False
         
+        
         # check path for file names
-        dir_list = os.listdir("data/backend/collection")
-        for i in dir_list:
-            if collection_slug in i:
-                already_in_database = True
-                print('already in db...')
-                
-                # READ JSON slugs file
-                # file1 = open(f"data/backend/slug/slug_name.json", 'r')
-                
-                with open(f"data/backend/slug/slug_name.txt", "r") as data_file:    
-                    old_data = data_file.read()
-                    
-                old_data = old_data.split(',')
-                list1 = []
-                
-                for i in old_data:
-                    print(i.strip() )
-                    list1.append(i.strip() )
-                
-                if collection_slug not in list1:
-                    list1.append(collection_slug)
-                data_file.close()
-                
-                with open(f"data/backend/slug/slug_name.txt", 'w') as outfile:
-                    for i in range(len(list1)):
-                        outfile.write(list1[i])
-                        if i != len(list1)-1:
-                            outfile.write(', ')
-                outfile.close()
-                
-                
-                found = False
-                
+        # dir_list = os.listdir("data/backend/collection")
 
-                
-                if found:
-                    print('found')
-                    pass
-                else:
-                    print('writing slug name')
-                    # #write json files
-                    # file2 = open(f"data/backend/slug/slug_name.json", 'a')
-                    
-                    
-                    # file2.write('{collection_slug}')
-                    # file2.close()
-                break
+        
+        with open(f"data/backend/slug/slug_name.txt", "r") as data_file:    
+            old_data = data_file.read()
+            
+        old_data = old_data.split(',')
+        list1 = []
+                                
+        for i in old_data:
+            print(i.strip() )
+            list1.append(i.strip() )
+        
+        if collection_slug not in list1:
+            list1.append(collection_slug)
+        data_file.close()
+        
+        with open(f"data/backend/slug/slug_name.txt", 'w') as outfile:
+            for i in range(len(list1)):
+                outfile.write(list1[i])
+                if i != len(list1)-1:
+                    outfile.write(', ')
+        outfile.close()
+        
+        
+        found = False
+        
+
+        
+        if found:
+            print('found')
+            pass
+        else:
+            print('writing slug name')
+            # #write json files
+            # file2 = open(f"data/backend/slug/slug_name.json", 'a')
+            
+            
+            # file2.write('{collection_slug}')
+            # file2.close()
+        
             
         
             
@@ -178,6 +175,10 @@ class AddNewCollection(object):
             print('counter: ', counter)
             print('len set:', s.size() )
             print('error list: ', error_list)
+            
+            
+            
+            
         else:
             print("already in database")
             f = open(f"data/backend/collection/collection_{collection_slug}.json")
@@ -185,4 +186,6 @@ class AddNewCollection(object):
             
             f.close()
             print('done')
+            
+            
             

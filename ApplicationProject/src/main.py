@@ -12,11 +12,7 @@ if __name__ == "__main__":
     start_time = time()
     
     
-    
-    
     Main_Window.execute()
-    
-    
     
     
     

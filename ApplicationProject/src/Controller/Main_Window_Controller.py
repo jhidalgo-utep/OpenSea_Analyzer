@@ -7,10 +7,6 @@ from Model.Top_Selling_NFTs import Top_Selling_NFTs
 from Model.Collection_Stats import Collection_Stats
 from Model.Get_Collection_Event_Types import Get_Collection_Event_Types
 
-# Objects
-# UserSetting = UserSetting()
-# AddNewCollection = AddNewCollection()
-
 class Main_Window_Controller(object):
     def __init__(self):
         self.custom = True
@@ -19,7 +15,6 @@ class Main_Window_Controller(object):
     def execute(user_choice):
         if user_choice == "":
             print('Error: please enter valid command\n')
-
 
         else:
             if "END" in user_choice or "STOP" in user_choice:
